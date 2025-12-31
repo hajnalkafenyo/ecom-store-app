@@ -1,11 +1,11 @@
-import { Header } from "./components/header";
-import { Footer } from "./components/footer";
-import { Routes, Route } from "react-router-dom";
-import { Home } from "./Home";
-import Product from "./Product";
-import { Contact } from "./Contact";
-import { CheckoutSuccess } from "./CheckoutSuccess";
-import { CartPage } from "./CartPage";
+import { Header } from './components/header';
+import { Footer } from './components/footer';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './Home';
+import Product from './Product';
+import { Contact } from './Contact';
+import { CheckoutSuccess } from './CheckoutSuccess';
+import { CartPage } from './CartPage';
 
 function App() {
   return (
