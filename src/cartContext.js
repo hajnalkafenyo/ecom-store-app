@@ -33,6 +33,7 @@ export const CartProvider = ({ children }) => {
 
     function emptyCart() {
         setCartItems([])
+        localStorage.removeItem("cart")
     }
 
 

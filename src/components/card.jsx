@@ -14,7 +14,7 @@ export function Card({
   const navigate = useNavigate();
   return (
     <div
-      className="border border-gray-300 w-[200px] rounded p-2 flex flex-col bg-white hover:bg-gray-50 hover:border-amber-400 transition-colors cursor-pointer"
+      className="border border-gray-300 md:w-[200px] w-full max-w-[300px] rounded p-2 flex flex-col bg-white hover:bg-gray-50 hover:border-amber-400 transition-colors cursor-pointer"
       role="button"
       tabIndex={0}
       onClick={() => {

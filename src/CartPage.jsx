@@ -15,7 +15,7 @@ export function CartPage() {
     );
   } else {
     return (
-      <div className="bg-gray-50 p-2">
+      <div className="bg-gray-50">
         <div>
           {cartItems.map((item) => {
             return (
@@ -30,19 +30,12 @@ export function CartPage() {
             );
           })}
         </div>
-        <div className="border border-gray-300 rounded-md flex items-end flex-col gap-2 m-2 p-2 w-full bg-gray-50">
+        <div className=" flex items-end flex-col gap-2 m-2 p-2 w-full bg-gray-50">
           <div className="text-right font-semibold text-lg text-gray-800">
             {formatCurrency(getCartSum())}
           </div>
           <Link to="/checkout-success">
-            <Button
-              onClick={() => {
-                emptyCart();
-              }}
-              variant="secondary"
-            >
-              Buy now
-            </Button>
+            <Button variant="secondary">Buy now</Button>
           </Link>
         </div>
       </div>

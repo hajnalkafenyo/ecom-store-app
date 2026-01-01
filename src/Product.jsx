@@ -70,7 +70,7 @@ function Product() {
 
   return (
     <div>
-      <div className="flex flex-row gap-2">
+      <div className="flex md:flex-row flex-col gap-2">
         <img
           src={product.image.url}
           className="h-[160px] w-full object-cover"
