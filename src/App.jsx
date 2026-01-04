@@ -6,6 +6,8 @@ import Product from './Product';
 import { Contact } from './Contact';
 import { CheckoutSuccess } from './CheckoutSuccess';
 import { CartPage } from './CartPage';
+import { PrivacyPolicy } from './PrivacyPolicy';
+import { CookiePolicy } from './CookiePolicy';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/checkout-success" element={<CheckoutSuccess />} />
           <Route path="/cart-page" element={<CartPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
         </Routes>
       </main>
       <Footer />
