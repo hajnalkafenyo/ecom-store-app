@@ -147,18 +147,20 @@ function Product() {
         {''}
         Share
       </Button>
-      <div className="border p-2 m-px rounded-sm">
-        {product.reviews.map((review) => (
-          <div>
-            <Review
-              id={review.id}
-              username={review.username}
-              description={review.description}
-              rating={review.rating}
-            />
-          </div>
-        ))}
-      </div>
+      {!!product.reviews.length && (
+        <div className="border p-2 my-1 rounded-sm">
+          {product.reviews.map((review) => (
+            <div>
+              <Review
+                id={review.id}
+                username={review.username}
+                description={review.description}
+                rating={review.rating}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
