@@ -109,6 +109,44 @@ function Product() {
           </div>
         </div>
       </div>
+      <Button
+        variant="secondary"
+        onClick={() => {
+          const postTitle = product.title;
+          const postFile = product.image.url || '';
+          const postDescription = product.description;
+          const postUrl = window.location.href;
+
+          const postBody = `Check out ${product.title} ${
+            product.discountedPrice !== product.price
+              ? `for the discounted price ${product.discountedPrice} kr`
+              : `for the price ${product.discountedPrice} kr `
+          } on this link: ${postUrl}`;
+
+          const postData = {
+            postTitle,
+            postDescription,
+            postBody,
+            postFile,
+          };
+
+          const postDataEncoded = btoa(JSON.stringify(postData));
+
+          const url = `https://hajnalka-social-noroff.netlify.app/feed/index.html?data=${postDataEncoded}`;
+
+          window.open(url);
+        }}
+      >
+        <img
+          src="/share.svg"
+          height="16px"
+          width="16px"
+          alt="share"
+          className="inline relative"
+        />{' '}
+        {''}
+        Share
+      </Button>
       <div className="border p-2 m-px rounded-sm">
         {product.reviews.map((review) => (
           <div>
