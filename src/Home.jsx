@@ -1,10 +1,12 @@
 import { Card } from './components/card';
+import { Input } from './components/input';
 import { useState, useEffect } from 'react';
 
 export function Home() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(undefined);
+  const [filterText, setFilterText] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -56,21 +58,37 @@ export function Home() {
     return <p>There was an error when loading the data. {error}</p>;
   }
 
+  const handleFilterChange = (event) => {
+    setFilterText(event.target.value);
+  };
+  const filteredProducts = products.filter((item) =>
+    item.title.toLowerCase().includes(filterText.toLowerCase())
+  );
+
   return (
-    <div className="flex flex-row flex-wrap gap-2 justify-center">
-      {products.map((product) => {
-        return (
-          <Card
-            id={product.id}
-            title={product.title}
-            description={product.description}
-            rate={product.rating}
-            price={product.price}
-            discountedPrice={product.discountedPrice}
-            image={product.image.url}
-          />
-        );
-      })}
+    <div className="flex flex-col gap-2">
+      <input
+        className="border-2 rounded-sm px-0.5"
+        type="text"
+        placeholder="Search..."
+        value={filterText}
+        onChange={handleFilterChange}
+      />
+      <div className="flex flex-row flex-wrap gap-2 justify-center">
+        {filteredProducts.map((product) => {
+          return (
+            <Card
+              id={product.id}
+              title={product.title}
+              description={product.description}
+              rate={product.rating}
+              price={product.price}
+              discountedPrice={product.discountedPrice}
+              image={product.image.url}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

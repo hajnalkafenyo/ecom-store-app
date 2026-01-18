@@ -1,6 +1,7 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { formatCurrency } from '../utils/formatCurrency';
+import { difference } from '../utils/difference';
+import { LinkButton } from './link';
 
 export function Card({
   id,
@@ -11,16 +12,8 @@ export function Card({
   discountedPrice,
   rate,
 }) {
-  const navigate = useNavigate();
   return (
-    <div
-      className="border border-gray-300 md:w-[200px] w-full max-w-[300px] rounded p-2 flex flex-col bg-white hover:bg-gray-50 hover:border-amber-400 transition-colors cursor-pointer"
-      role="button"
-      tabIndex={0}
-      onClick={() => {
-        navigate(`/product/${id}`);
-      }}
-    >
+    <div className="border border-gray-300 md:w-[200px] w-full max-w-[300px] rounded p-2 flex flex-col bg-white hover:bg-gray-50 hover:border-amber-400 transition-colors cursor-pointer">
       <div className="flex flex-col object-fit">
         <img
           src={image}
@@ -44,6 +37,15 @@ export function Card({
               <p className="font-thin line-through text-sm text-gray-500">
                 {formatCurrency(price)}
               </p>
+              <p className="font-thin text-sm text-gray-500">
+                {formatCurrency(
+                  difference({
+                    price,
+                    discountedPrice,
+                  })
+                )}{' '}
+                discount
+              </p>
               <p className="text-amber-600 font-semibold">
                 {formatCurrency(discountedPrice)}
               </p>
@@ -55,6 +57,7 @@ export function Card({
           )}
         </div>
       </div>
+      <LinkButton to={`/product/${id}`}>View Product</LinkButton>
     </div>
   );
 }

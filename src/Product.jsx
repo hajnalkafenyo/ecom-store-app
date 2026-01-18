@@ -142,7 +142,7 @@ function Product() {
           height="16px"
           width="16px"
           alt="share"
-          className="inline relative"
+          className="inline"
         />{' '}
         {''}
         Share

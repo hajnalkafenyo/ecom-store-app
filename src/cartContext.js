@@ -79,6 +79,15 @@ export const CartProvider = ({ children }) => {
     }
 
 
+    function getCartDifference() {
+        let amount = 0
+        for (let i = 0; i < cartItems.length; i++) {
+            const element = cartItems[i];
+            amount += element.price - element.discountedPrice
+
+        }
+        return amount
+    }
 
     return <CartContext.Provider value={{
         cartItems,
@@ -86,7 +95,8 @@ export const CartProvider = ({ children }) => {
         emptyCart,
         increaseAmount,
         decreaseAmount,
-        getCartSum
+        getCartSum,
+        getCartDifference
     }}>
         {children}
     </CartContext.Provider>
