@@ -48,6 +48,7 @@ export const CartProvider = ({ children }) => {
         const newIndex = newList.findIndex((i) => i.id === id)
         newList[newIndex].amount = newAmount
         setCartItems(newList)
+        localStorage.setItem("cart", JSON.stringify(newList));
     }
 
     function decreaseAmount(id) {
@@ -66,6 +67,7 @@ export const CartProvider = ({ children }) => {
         const newIndex = newList.findIndex((i) => i.id === id)
         newList[newIndex].amount = newAmount
         setCartItems(newList)
+        localStorage.setItem("cart", JSON.stringify(newList));
     }
 
     function getCartSum() {
@@ -80,13 +82,13 @@ export const CartProvider = ({ children }) => {
 
 
     function getCartDifference() {
-        let amount = 0
+        let amountKr = 0
         for (let i = 0; i < cartItems.length; i++) {
             const element = cartItems[i];
-            amount += element.price - element.discountedPrice
+            amountKr += (element.price - element.discountedPrice) * element.amount
 
         }
-        return amount
+        return amountKr
     }
 
     return <CartContext.Provider value={{

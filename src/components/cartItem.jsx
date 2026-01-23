@@ -1,5 +1,6 @@
 import { AddButton } from './addButton';
 import { formatCurrency } from '../utils/formatCurrency';
+import { difference } from '../utils/difference';
 
 export function CartItem({
   id,
@@ -10,12 +11,12 @@ export function CartItem({
   description,
 }) {
   return (
-    <div className="flex md:flex-row flex-col items-center border border-gray-300 rounded-md w-full bg-gray-50">
+    <div className="flex md:flex-row flex-col items-center border border-gray-300 md:w-full max-w-[300px] rounded-md  bg-gray-50">
       <div className="items-center">
         <img
           src={image}
           alt="The product"
-          className="md:w-6 md:h-6 w-full h-[120px]"
+          className="md:w-[250px] w-[128px] "
         />
       </div>
       <div className="flex md:flex-row flex-col p-2 grow">
@@ -31,6 +32,15 @@ export function CartItem({
             <>
               <p className="font-thin line-through text-sm text-gray-500">
                 {formatCurrency(price)}
+              </p>
+              <p className="font-thin text-sm text-gray-500">
+                {formatCurrency(
+                  difference({
+                    price,
+                    discountedPrice,
+                  })
+                )}{' '}
+                discount
               </p>
               <p className="text-amber-600 font-semibold">
                 {formatCurrency(discountedPrice)}

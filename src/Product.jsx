@@ -5,6 +5,7 @@ import { Button } from './components/button';
 import { useState, useEffect } from 'react';
 import { useCart } from './cartContext';
 import { formatCurrency } from './utils/formatCurrency';
+import { difference } from './utils/difference';
 
 function Product() {
   const [product, setProduct] = useState();
@@ -89,6 +90,9 @@ function Product() {
               <div>
                 <p className="font-thin line-through text-sm">
                   {formatCurrency(product.price)}
+                </p>
+                <p className="font-thin text-sm text-gray-500">
+                  {formatCurrency(difference(product))} discount
                 </p>
                 <p className="text-green-700 font-semibold">
                   {formatCurrency(product.discountedPrice)}

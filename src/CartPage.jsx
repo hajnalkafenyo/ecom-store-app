@@ -5,7 +5,7 @@ import { CartItem } from './components/cartItem';
 import { formatCurrency } from './utils/formatCurrency';
 
 export function CartPage() {
-  const { cartItems, getCartSum, emptyCart } = useCart();
+  const { cartItems, getCartSum, getCartDifference } = useCart();
 
   if (!cartItems.length) {
     return (
@@ -31,6 +31,9 @@ export function CartPage() {
           })}
         </div>
         <div className=" flex items-end flex-col gap-2 m-2 p-2 w-full bg-gray-50">
+          <p className="font-thin text-sm text-gray-500">
+            {formatCurrency(getCartDifference())} discount
+          </p>
           <div className="text-right font-semibold text-lg text-gray-800">
             {formatCurrency(getCartSum())}
           </div>

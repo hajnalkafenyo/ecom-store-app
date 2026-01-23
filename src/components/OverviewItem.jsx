@@ -1,4 +1,5 @@
 import { formatCurrency } from '../utils/formatCurrency';
+import { difference } from '../utils/difference';
 
 export function OverviewItem({ price, discountedPrice, title, image }) {
   return (
@@ -13,6 +14,15 @@ export function OverviewItem({ price, discountedPrice, title, image }) {
             <>
               <p className="font-thin line-through text-sm text-gray-500">
                 {formatCurrency(price)}
+              </p>
+              <p className="font-thin text-sm text-gray-500">
+                {formatCurrency(
+                  difference({
+                    price,
+                    discountedPrice,
+                  })
+                )}{' '}
+                discount
               </p>
               <p className="text-amber-600 font-semibold">
                 {formatCurrency(discountedPrice)}

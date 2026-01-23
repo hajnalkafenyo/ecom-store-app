@@ -16,7 +16,7 @@ export function CheckoutSuccess() {
 
   return (
     <div className="flex flex-col items-stretch md:items-center gap-2">
-      <h1>Thank you for shopping with us!</h1>
+      <h1>The order was successful! Thank you for shopping with us!</h1>
       <img src="./checkout.png" alt="Checkout success" />
       <LinkButton variant="secondary" to="/">
         Back to home{' '}

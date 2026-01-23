@@ -6,9 +6,13 @@ import { validateEmail, validateText } from './utils/validator';
 
 export function Contact() {
   const [fullName, setFullName] = useState('');
+  const [nameError, setNameError] = useState('');
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [subject, setSubject] = useState('');
+  const [subjectError, setSubjectError] = useState('');
   const [body, setBody] = useState('');
+  const [bodyError, setBodyError] = useState('');
 
   return (
     <div className="flex flex-col items-center bg-gray-50 p-4">
@@ -48,20 +52,39 @@ export function Contact() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            let isValid = true;
             if (!validateEmail(email)) {
-              return;
+              setEmailError('Invalid email');
+              isValid = false;
+            } else {
+              setEmailError('');
             }
+
             if (!validateText(fullName)) {
-              return;
+              setNameError('Invalid name');
+              isValid = false;
+            } else {
+              setNameError('');
             }
             if (!validateText(subject)) {
-              return;
+              setSubjectError('Invalid subject');
+              isValid = false;
+            } else {
+              setSubjectError('');
             }
             if (!validateText(body)) {
+              setBodyError('Invalid body');
+              isValid = false;
+            } else {
+              setBodyError('');
+            }
+
+            if (!isValid) {
               return;
             }
 
-            console.log();
+            alert(`${subject} was submitted`);
+            console.log(`${email} ${subject} ${fullName} ${body}`);
           }}
           className="text-gray-700 flex flex-col gap-2"
         >
@@ -75,6 +98,7 @@ export function Contact() {
             placeholder="John Doe"
             helptext="Please write your full name"
           />
+          <span className="text-red-600">{nameError}</span>
           <Input
             value={subject}
             onChange={(e) => {
@@ -85,6 +109,7 @@ export function Contact() {
             placeholder="Subject"
             helptext="Please write your object"
           />
+          <span className="text-red-600">{subjectError}</span>
           <Input
             value={email}
             onChange={(e) => {
@@ -95,6 +120,7 @@ export function Contact() {
             placeholder="sample@example.com"
             helptext="Please write your email address"
           />
+          <span className="text-red-600">{emailError}</span>
           <Text
             value={body}
             onChange={(e) => {
@@ -105,6 +131,7 @@ export function Contact() {
             placeholder="Please write your message here"
             helptext="Your message could be min 3 characters length"
           />
+          <span className="text-red-600">{bodyError}</span>
           <Button type="submit">Send Me</Button>
         </form>
       </div>
