@@ -3,6 +3,7 @@ import { Button } from './components/button';
 import { Input } from './components/input';
 import { Text } from './components/text';
 import { validateEmail, validateText } from './utils/validator';
+import { useTitle } from './utils/useTitle';
 
 export function Contact() {
   const [fullName, setFullName] = useState('');
@@ -13,6 +14,8 @@ export function Contact() {
   const [subjectError, setSubjectError] = useState('');
   const [body, setBody] = useState('');
   const [bodyError, setBodyError] = useState('');
+
+  useTitle('Contact Page');
 
   return (
     <div className="flex flex-col items-center bg-gray-50 p-4">

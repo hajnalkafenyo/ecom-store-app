@@ -3,9 +3,12 @@ import { useCart } from './cartContext';
 import { Button } from './components/button';
 import { CartItem } from './components/cartItem';
 import { formatCurrency } from './utils/formatCurrency';
+import { useTitle } from './utils/useTitle';
 
 export function CartPage() {
   const { cartItems, getCartSum, getCartDifference } = useCart();
+
+  useTitle('Cart | Ecom Store');
 
   if (!cartItems.length) {
     return (
@@ -16,7 +19,7 @@ export function CartPage() {
   } else {
     return (
       <div className="bg-gray-50">
-        <div>
+        <div className="flex flex-col gap-4">
           {cartItems.map((item) => {
             return (
               <CartItem

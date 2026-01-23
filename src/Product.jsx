@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useCart } from './cartContext';
 import { formatCurrency } from './utils/formatCurrency';
 import { difference } from './utils/difference';
+import { useTitle } from './utils/useTitle';
 
 function Product() {
   const [product, setProduct] = useState();
@@ -14,6 +15,11 @@ function Product() {
 
   const { id } = useParams();
   const { addCartItem } = useCart();
+
+  useTitle(
+    product ? `${product.title} | Ecom Store` : `Product page | Ecom Store`,
+    product ? product.description : ''
+  );
 
   useEffect(() => {
     async function fetchData() {
@@ -71,6 +77,7 @@ function Product() {
 
   return (
     <div>
+      <title>{product.title} | Ecom Store</title>
       <div className="flex md:flex-row flex-col gap-2">
         <img
           src={product.image.url}

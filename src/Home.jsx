@@ -1,5 +1,6 @@
 import { Card } from './components/card';
 import { useState, useEffect } from 'react';
+import { useTitle } from './utils/useTitle';
 
 export function Home() {
   const [products, setProducts] = useState([]);
@@ -7,6 +8,7 @@ export function Home() {
   const [error, setError] = useState(undefined);
   const [filterText, setFilterText] = useState('');
 
+  useTitle('Home Page | Ecom Store');
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);

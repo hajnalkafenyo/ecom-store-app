@@ -28,7 +28,7 @@ export function Card({
       <div className="flex flex-col border-y border-gray-300">
         <p className="font-sans italic text-sm text-gray-600">{description}</p>
       </div>
-      <div className="flex flex-row gap-2 justify-between items-end">
+      <div className="flex flex-row gap-2 justify-between items-end grow">
         <div className="text-sm"> {stars(rate, '★')}</div>
         <div className="flex flex-col">
           {discountedPrice !== price ? (

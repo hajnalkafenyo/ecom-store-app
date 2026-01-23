@@ -28,7 +28,7 @@ export function CheckoutSuccess() {
           className="inline"
         />{' '}
       </LinkButton>
-      <div>
+      <div className="flex flex-col gap-4">
         {items.map((item) => {
           return (
             <OverviewItem
